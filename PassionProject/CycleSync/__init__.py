@@ -1,5 +1,5 @@
 from flask import Flask
-from PassionProject.routes import rt
+from CycleSync.routes import rt
 
 
 
@@ -13,7 +13,7 @@ def create_app():
     app.register_blueprint(rt)
 
 
-    from PassionProject.CycleSync.main import db
+    from CycleSync.models import db
    
     db.init_app(app)
 
