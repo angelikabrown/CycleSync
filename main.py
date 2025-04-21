@@ -29,6 +29,22 @@ class Data:
         self.date = date
         self.timestamp = timestamp
 
+        # getter methods
+    def get_temperature(self):
+        return self.temperature
+    
+    def get_mood(self):
+        return self.mood
+    
+    def get_energy(self):
+        return self.energy
+    
+    def get_notes(self):
+        return self.notes
+    
+    def get_date(self):
+        return self.date
+
 
 
 
