@@ -4,16 +4,16 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 login_manager = LoginManager(app)
-import main
+import PassionProject.CycleSync.main as main
 
-
-# app.config['SECRET_KEY'] = 'your_secret_key'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
+
+
+app.config['SITE_NAME'] = 'CycleSync'
+app.config['FLASK_DEBUG'] = 1
 
 if __name__ == "__main__":
     app.run(debug=True)
