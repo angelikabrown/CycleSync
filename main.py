@@ -1,4 +1,19 @@
-class User:
+
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+
+
+
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), unique=True)
+    username = db.Column(db.String(150), unique=True)
+    password = db.Column(db.String(150))
+    # Define the relationship with the Data model  
+    data = db.relationship('Data', backref='user', lazy=True)      
+
     def __init__(self, id, email, username, password):
         self.id = id
         self.email = email
@@ -20,8 +35,21 @@ class User:
 
 
 
-class Data:
-    def __init__(self, temperature, mood, energy, notes, date, timestamp):
+class Data(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    temperature = db.Column(db.Float)
+    mood = db.Column(db.String(50))
+    energy = db.Column(db.String(50))
+    notes = db.Column(db.String(200))
+    date = db.Column(db.String(50))
+    timestamp = db.Column(db.String(50))
+    # Define the relationship with the User model
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref=db.backref('data', lazy=True))
+    # Define the relationship with the Data model
+
+    def __init__(self, temp_id, temperature, mood, energy, notes, date, timestamp):
+        self.id = temp_id
         self.temperature = temperature
         self.mood = mood
         self.energy = energy
