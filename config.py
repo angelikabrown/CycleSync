@@ -16,3 +16,6 @@
 #     SQLALCHEMY_DATABASE_URI = 'sqlite:///cyclesync.db'
 #     SQLALCHEMY_ECHO = False
 #     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+#export FLASK_APP=app.py
+#flask run
