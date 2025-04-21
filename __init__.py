@@ -5,6 +5,9 @@ from routes import rt
 
 def create_app():
     app = Flask(__name__)  
+    #is this where the database gets connected?
+    # app.config.from_object('config.Config')
+
     # app.config['SECRET_KEY'] = 'your_secret_key'
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cyclesync.db'
     # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -12,6 +15,7 @@ def create_app():
     # app.config['DEBUG'] = True
 
 
+    #register the blueprint
     app.register_blueprint(rt)
     app.add_url_rule('/', endpoint='index')
 
