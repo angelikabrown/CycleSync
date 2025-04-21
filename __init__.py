@@ -1,5 +1,6 @@
 from flask import Flask
-from main import main
+from routes import rt
+
 
 
 def create_app():
@@ -11,8 +12,8 @@ def create_app():
     # app.config['DEBUG'] = True
 
 
-    app.register_blueprint(main)
-    
+    app.register_blueprint(rt)
+    app.add_url_rule('/', endpoint='index')
 
     from main import db
     db.init_app(app)
