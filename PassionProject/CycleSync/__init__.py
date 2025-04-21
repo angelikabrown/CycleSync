@@ -4,7 +4,7 @@ from CycleSync.routes import rt
 
 
 def create_app():
-    app = Flask(__name__)  
+    app = Flask(__name__, instance_relative_config=False)  
     #is this where the database gets connected?
     # or should I make a config.py 
     app.config.from_object('config.Config')

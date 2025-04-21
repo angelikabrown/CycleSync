@@ -1,10 +1,11 @@
-from flask import Flask
-from flask_login import LoginManager
+from flask import render_template, session
+from CycleSync.models import User, Data
+#from flask_login import LoginManager, UserMixin
 
+from . import create_app
+app = create_app()
 
-app = Flask(__name__)
-login_manager = LoginManager(app)
-import CycleSync.models as models
+#login_manager = LoginManager(app)
 
 
 @app.route("/")
