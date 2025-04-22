@@ -1,7 +1,6 @@
-
-from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 
+#initialize the database extention
 db = SQLAlchemy()
 
 
@@ -11,25 +10,34 @@ class User(db.Model):
     username = db.Column(db.String(150))
     password = db.Column(db.String(150))
     # Define the relationship with the Data model  
-    #data = db.relationship('Data', backref='user', nullable=True)      
+    #data = db.relationship('Data', backref='user', nullable=True)    
 
-    def __init__(self, email, username, password):
-        self.email = email
-        self.username = username
-        self.password = password
+    def __repr__(self):
+        return f'<User {self.username}>'
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email }
+
+    # def __init__(self, email, username, password):
+    #     self.email = email
+    #     self.username = username
+    #     self.password = password
 
 
-        # getter methods
-    def get_email(self):
-        return self.email
+    #     # getter methods
+    # def get_email(self):
+    #     return self.email
 
 
-    def get_username(self):
-        return self.username
+    # def get_username(self):
+    #     return self.username
 
 
-    def get_password(self):
-        return self.password
+    # def get_password(self):
+    #     return self.password
 
 
 
@@ -46,8 +54,7 @@ class Data(db.Model):
     
     # Define the relationship with the Data model
 
-    def __init__(self, temp_id, temperature, mood, energy, notes, date, timestamp):
-        self.id = temp_id
+    def __init__(self, temperature, mood, energy, notes, date, timestamp):
         self.temperature = temperature
         self.mood = mood
         self.energy = energy
