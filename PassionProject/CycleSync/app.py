@@ -26,16 +26,16 @@ def create_app():
             db.create_all()
             print("Database created!")
             print(db)
-            existing_user = User.query.filter_by(username="joes").first()
-            if not existing_user:
-                u2 = User(email="eat@joes", username="joes", password="password")
-                db.session.add(u2)
-                db.session.commit()
-            else:
-                print("User with username 'joes' already exists.")
-            u5 = User(email="eat@jan", username="jan", password="passwurd")
-            db.session.add(u5)
-            db.session.commit()
+            # existing_user = User.query.filter_by(username="joes").first()
+            # if not existing_user:
+            #     u2 = User(email="eat@joes", username="joes", password="password")
+            #     db.session.add(u2)
+            #     db.session.commit()
+            # else:
+            #     print("User with username 'joes' already exists.")
+            #u5 = User(email="eat@jan", username="jan", password="passwurd")
+            #db.session.add(u5)
+            #db.session.commit()
 
 
 
