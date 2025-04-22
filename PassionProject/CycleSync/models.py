@@ -5,16 +5,15 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class User(db.Model, UserMixin):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True)
-    username = db.Column(db.String(150), unique=True)
+    email = db.Column(db.String(150))
+    username = db.Column(db.String(150))
     password = db.Column(db.String(150))
     # Define the relationship with the Data model  
-    data = db.relationship('Data', backref='user', lazy=True)      
+    #data = db.relationship('Data', backref='user', nullable=True)      
 
-    def __init__(self, id, email, username, password):
-        self.id = id
+    def __init__(self, email, username, password):
         self.email = email
         self.username = username
         self.password = password
@@ -43,8 +42,8 @@ class Data(db.Model):
     date = db.Column(db.String(50))
     timestamp = db.Column(db.String(50))
     # Define the relationship with the User model
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User', backref=db.backref('data', lazy=True))
+    #user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
     # Define the relationship with the Data model
 
     def __init__(self, temp_id, temperature, mood, energy, notes, date, timestamp):

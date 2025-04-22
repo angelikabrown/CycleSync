@@ -4,11 +4,13 @@ from CycleSync.routes import rt
 
 
 def create_app():
-    app = Flask(__name__, instance_relative_config=False)  
+    #app = Flask(__name__, instance_relative_config=False)  
     #is this where the database gets connected?
     # or should I make a config.py 
-    app.config.from_object('config.Config')
-
+    #app.config.from_object('config.Config')
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cyclesync.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     #register the blueprint that was defined in routes.py
     app.register_blueprint(rt)
 
