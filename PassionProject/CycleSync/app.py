@@ -1,7 +1,8 @@
 from flask import Flask 
-from models import db, User
+from models import db, User, Data
 from os import path
 from routes import init_routes
+
 #from . import create_app
 
 
@@ -12,7 +13,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'angie'  
 
-    
+  
     
    #initilaze the database with the app, connecting them
     db.init_app(app)
@@ -34,8 +35,13 @@ def create_app():
             # else:
             #     print("User with username 'joes' already exists.")
             #u5 = User(email="eat@jan", username="jan", password="passwurd")
-            #db.session.add(u5)
-            #db.session.commit()
+            cd1 = Data(cycle_day="CD1", temperature=98.6, mood="good", energy="low", notes="New cycle begins", date="2023-10-01", timestamp="2023-10-01 12:00:00")
+            cd2 = Data(cycle_day="CD2", temperature=98.7, mood="good", energy="low", notes="Didn't sleep well last night", date="2023-10-02", timestamp="2023-10-02 12:00:00")
+            cd3 = Data(cycle_day="CD3", temperature=98.8, mood="good", energy="med", notes="walked for 2 miles today", date="2023-10-03", timestamp="2023-10-03 12:00:00")
+            cd4 = Data(cycle_day="CD4", temperature=98.9, mood="good", energy="med", notes="Feeling great!", date="2023-10-04", timestamp="2023-10-04 12:00:00")
+            cd5 = Data(cycle_day="CD5", temperature=97.6, mood="good", energy="low", notes="Feeling great!", date="2023-10-05", timestamp="2023-10-05 12:00:00")
+            db.session.add(cd2)
+            db.session.commit()
 
 
 

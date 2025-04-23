@@ -43,6 +43,7 @@ class User(db.Model):
 
 class Data(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    cycle_day = db.Column(db.String(10)) 
     temperature = db.Column(db.Float)
     mood = db.Column(db.String(50))
     energy = db.Column(db.String(50))
@@ -52,31 +53,49 @@ class Data(db.Model):
     # Define the relationship with the User model
     #user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
-    # Define the relationship with the Data model
+   
 
-    def __init__(self, temperature, mood, energy, notes, date, timestamp):
-        self.temperature = temperature
-        self.mood = mood
-        self.energy = energy
-        self.notes = notes
-        self.date = date
-        self.timestamp = timestamp
+    def __repr__(self):
+        return f'<Data {self.cycle_day}>'
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'cycle_day': self.cycle_day,
+            'temperature': self.temperature,
+            'mood': self.mood,
+            'energy': self.energy,
+            'notes': self.notes,
+            'date': self.date,
+            'timestamp': self.timestamp}
 
-        # getter methods
-    def get_temperature(self):
-        return self.temperature
+    # def __init__(self, cycle_day, temperature, mood, energy, notes, date, timestamp):
+    #     self.cycle_day = cycle_day
+    #     self.temperature = temperature
+    #     self.mood = mood
+    #     self.energy = energy
+    #     self.notes = notes
+    #     self.date = date
+    #     self.timestamp = timestamp
+
+    #     # getter methods
+    # def get_cycle_day(self):
+    #     return self.cycle_day
     
-    def get_mood(self):
-        return self.mood
+    # def get_temperature(self):
+    #     return self.temperature
     
-    def get_energy(self):
-        return self.energy
+    # def get_mood(self):
+    #     return self.mood
     
-    def get_notes(self):
-        return self.notes
+    # def get_energy(self):
+    #     return self.energy
     
-    def get_date(self):
-        return self.date
+    # def get_notes(self):
+    #     return self.notes
+    
+    # def get_date(self):
+    #     return self.date
 
 
 

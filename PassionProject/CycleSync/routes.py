@@ -1,7 +1,7 @@
 
 #from flask import Blueprint
 from flask import request, jsonify
-from models import db, User
+from models import db, User, Data
 
 
 def init_routes(app):
@@ -46,6 +46,12 @@ def init_routes(app):
         db.session.delete(user)
         db.session.commit()
         return '', 204
+    
+
+    @app.route('/data', methods=['GET'])
+    def get_data():
+        data = Data.query.all()
+        return jsonify([data.to_dict() for data in data])
 
 
 
